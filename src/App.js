@@ -2,6 +2,9 @@ import { useState } from "react";
 import "./App.css";
 import characters from "./data/characters.json";
 
+// Components
+import { Avatar, LogoutButton, Navbar } from "./components";
+
 const App = () => {
   const [loggedCharacter, setLoggedCharacter] = useState(null);
   const [allCharacters, setAllCharacters] = useState([...characters]);
@@ -49,33 +52,21 @@ const App = () => {
 
   return (
     <div className='App'>
-      <nav>
-        {loggedCharacter && (
-          <>
-            <div class='avatar'>
-              <img src={loggedCharacter.image} />
-              <p>{loggedCharacter.name}</p>
-            </div>
-            <button class='logout' onClick={logout}>
-              Logout
-            </button>
-          </>
-        )}
-      </nav>
+      <Navbar logout={logout} loggedCharacter={loggedCharacter} />
       <div id='main'>
         {!loggedCharacter ? (
           <>
             <h1>Choose Your Main Character</h1>
             <section id='character-container'>
               {characters.slice(0, 5).map((character) => (
-                <div class='card card-login'>
+                <div className='card card-login' key={character.id}>
                   <img src={character.image} alt='character' />
                   <div className='card-container'>
                     <h2>{character.name}</h2>
                   </div>
-                  <div class='button-container'>
+                  <div className='button-container'>
                     <button
-                      class='choose-button'
+                      className='choose-button'
                       onClick={() => login(character.id)}
                     >
                       Choose
@@ -88,7 +79,7 @@ const App = () => {
         ) : (
           <section id='character-container'>
             {allCharacters.map((character) => (
-              <div class='card'>
+              <div className='card' key={character.id}>
                 <img src={character.image} alt='character' />
                 <div className='card-container'>
                   <h2>{character.name}</h2>
@@ -102,9 +93,9 @@ const App = () => {
                     <span>Species:</span> {character.species}
                   </p>
                 </div>
-                <div class='button-container'>
+                <div className='button-container'>
                   <button
-                    class='choose-button'
+                    className='choose-button'
                     onClick={() => addCharacter(character.id)}
                   >
                     Choose
@@ -128,13 +119,13 @@ const App = () => {
                     (character) => character.id === id
                   );
                   return (
-                    <div class='chosen-card'>
-                      <div class='avatar'>
+                    <div className='chosen-card' key={id}>
+                      <div className='avatar'>
                         <img src={character.image} />
                         <p>{character.name}</p>
                       </div>
                       <button
-                        class='remove-button'
+                        className='remove-button'
                         onClick={() => removeCharacter(character.id)}
                       >
                         Remove
