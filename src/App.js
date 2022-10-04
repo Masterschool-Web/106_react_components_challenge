@@ -8,6 +8,7 @@ import {
   Card,
   ChosenCard,
   Footer,
+  LoginCard,
   LogoutButton,
   Navbar,
 } from "./components";
@@ -66,20 +67,7 @@ const App = () => {
             <h1>Choose Your Main Character</h1>
             <section id='character-container'>
               {characters.slice(0, 5).map((character) => (
-                <div className='card card-login' key={character.id}>
-                  <img src={character.image} alt='character' />
-                  <div className='card-container'>
-                    <h2>{character.name}</h2>
-                  </div>
-                  <div className='button-container'>
-                    <button
-                      className='choose-button'
-                      onClick={() => login(character.id)}
-                    >
-                      Choose
-                    </button>
-                  </div>
-                </div>
+                <LoginCard character={character} login={login} />
               ))}
             </section>
           </>

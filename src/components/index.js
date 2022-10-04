@@ -5,6 +5,15 @@ import { Navbar } from "./layout/navbar/navbar";
 import { Card } from "./card/card";
 import { ChosenCard } from "./chosenCard/chosen";
 import { Footer } from "./layout/footer/footer";
-
+import { LoginCard } from "./card/loginCard";
 // EXPORT
-export { Avatar, Button, LogoutButton, Navbar, Card, ChosenCard, Footer };
+export {
+  Avatar,
+  Button,
+  LogoutButton,
+  Navbar,
+  Card,
+  ChosenCard,
+  Footer,
+  LoginCard,
+};
