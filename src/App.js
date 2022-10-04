@@ -131,7 +131,7 @@ const App = () => {
                     <div class='chosen-card'>
                       <div class='avatar'>
                         <img src={character.image} />
-                        <h2>{character.name}</h2>
+                        <p>{character.name}</p>
                       </div>
                       <button
                         class='remove-button'
