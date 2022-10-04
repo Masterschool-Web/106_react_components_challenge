@@ -3,7 +3,14 @@ import "./App.css";
 import characters from "./data/characters.json";
 
 // Components
-import { Avatar, LogoutButton, Navbar } from "./components";
+import {
+  Avatar,
+  Card,
+  ChosenCard,
+  Footer,
+  LogoutButton,
+  Navbar,
+} from "./components";
 
 const App = () => {
   const [loggedCharacter, setLoggedCharacter] = useState(null);
@@ -79,29 +86,7 @@ const App = () => {
         ) : (
           <section id='character-container'>
             {allCharacters.map((character) => (
-              <div className='card' key={character.id}>
-                <img src={character.image} alt='character' />
-                <div className='card-container'>
-                  <h2>{character.name}</h2>
-                  <p>
-                    <span>Sex:</span> {character.gender}
-                  </p>
-                  <p>
-                    <span>Status:</span> {character.status}
-                  </p>
-                  <p>
-                    <span>Species:</span> {character.species}
-                  </p>
-                </div>
-                <div className='button-container'>
-                  <button
-                    className='choose-button'
-                    onClick={() => addCharacter(character.id)}
-                  >
-                    Choose
-                  </button>
-                </div>
-              </div>
+              <Card character={character} addCharacter={addCharacter} />
             ))}
           </section>
         )}
@@ -119,18 +104,10 @@ const App = () => {
                     (character) => character.id === id
                   );
                   return (
-                    <div className='chosen-card' key={id}>
-                      <div className='avatar'>
-                        <img src={character.image} />
-                        <p>{character.name}</p>
-                      </div>
-                      <button
-                        className='remove-button'
-                        onClick={() => removeCharacter(character.id)}
-                      >
-                        Remove
-                      </button>
-                    </div>
+                    <ChosenCard
+                      character={character}
+                      removeCharacter={removeCharacter}
+                    />
                   );
                 })}
               </>
@@ -138,10 +115,7 @@ const App = () => {
           </section>
         )}
       </aside>
-      <footer>
-        <img src='../assets/avatar.png' />
-        <p>Created by David L. Rajcher</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
