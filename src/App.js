@@ -92,10 +92,25 @@ const App = () => {
                     (character) => character.id === id
                   );
                   return (
+<<<<<<< HEAD
                     <ChosenCard
                       character={character}
                       removeCharacter={removeCharacter}
                     />
+=======
+                    <div class='chosen-card'>
+                      <div class='avatar'>
+                        <img src={character.image} />
+                        <p>{character.name}</p>
+                      </div>
+                      <button
+                        class='remove-button'
+                        onClick={() => removeCharacter(character.id)}
+                      >
+                        Remove
+                      </button>
+                    </div>
+>>>>>>> fabc263f63d9fba86f9d2a2caecb726a3e0354e2
                   );
                 })}
               </>
