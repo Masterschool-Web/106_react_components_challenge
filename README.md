@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# React Components Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In this challenge, you will have to break down an entire page design into small components.
 
-## Available Scripts
+How small? 
 
-In the project directory, you can run:
+Well, that's depends on you!
 
-### `npm start`
+But we will discuss when do we need to break it into smaller/bigger pieces. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In the [solution branch](https://github.com/Masterschool-Web/react_components_challenge/tree/solution) you can find my approach to 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ⚙️ Run the project
 
-### `npm test`
+Inside the project's directory:
+```npm start```
+This should open a tab inside your browser with the project already running.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🎯 Goal
 
-### `npm run build`
+Unlike challenges we did before, there is no "one right answer" for this challenge.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The general goal is to break apart the code of the entire page into smaller pieces - or "Components". 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+These components should be reusable. So for example, the `Card` component should be used for all card. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We should not have a `MortyCard` and a `SummerCard`, but the data of "Morty" and "Summer" should be inserted into the `Card` component to present different cards. 
 
-### `npm run eject`
+In other words, component should be general enough to be reused many time, and not too specific to be used only once (beside some exceptions).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🖌️  Design
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The design is already created for you (in the css file). 
+The entire page is working, you need to take it apart and make sure it is still working :)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<img width="1377" alt="design" src="https://user-images.githubusercontent.com/31222514/195375003-d7c32f4e-0b57-479f-9045-c2baec7cb1ea.png">
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ⚔️ Plan Of Attack
 
-## Learn More
+### Step 1 - visualize
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Before start coding, visualize how you want to break down the design.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+We will start by breaking the design into different areas.
+- What are these areas in the current design? 
 
-### Code Splitting
+### Step 2 - Break to big pieces (areas)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+We can break the design into the following areas:
 
-### Analyzing the Bundle Size
+<img width="910" alt="big_pieces" src="https://user-images.githubusercontent.com/31222514/195378052-2b46170c-2e90-41a6-932c-cfe7e8281011.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+We can break this design into
+- Navbar
+- Main area (card container)
+- Sidebar
+- Footer
 
-### Making a Progressive Web App
+Inside `src` folder create a new `layout` folder.
+Insie you can create a folder for each component.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Each component folder will have two files:
+- `LayoutComponent.jsx`
+- `layout_component.css`
 
-### Advanced Configuration
+For example:
+- `Navbar.jsx`
+- `navbar.css`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This way we can already have major components and make it easier to read the code inside `App.js`.
 
-### Deployment
+Once we did that, how can we break apart each area into smaller pieces?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Step 3 - Break each piece to little pieces
 
-### `npm run build` fails to minify
+We can see that the Avatar (the profile image) is reused across different areas:
+- Navbar
+- Sidebar (inside each card)
+- Footer (for the author)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+So if we create an `Avatar` component, we can import it into each area.
+This way we can create a small piece once and reuse it every where! 
+
+Break down more of the areas into smaller pieces!
+
+Inside `src` folder create a new `layout` folder.
+Insie you can create a folder for each component.
+
+Each component folder will have two files:
+- `Component.jsx`
+- `component.css`
+
+For example:
+- `Avatar.jsx`
+- `avatar.css`
+
+For example:
+<img width="1358" alt="components" src="https://user-images.githubusercontent.com/31222514/195376154-38259e8b-178f-4538-b23c-5f45c583b44c.png">
+
+--------------
+
+<p>
+<img width="2%" src="https://user-images.githubusercontent.com/31222514/195368124-52fe1a51-3ee5-4e89-97e3-d121c6475429.png" alt="profile picture"/>
+Challenge written by David Rajcher (https://github.com/David-L-R)
+  </p>
