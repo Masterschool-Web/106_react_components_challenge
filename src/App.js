@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import characters from "./data/characters.json";
-
+import { Navbar } from "./components/layout/navbar/navbar";
 const App = () => {
   const [loggedCharacter, setLoggedCharacter] = useState(null);
   const [allCharacters, setAllCharacters] = useState([...characters]);
@@ -49,19 +49,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      <nav>
-        {loggedCharacter && (
-          <>
-            <div class='avatar'>
-              <img src={loggedCharacter.image} />
-              <p>{loggedCharacter.name}</p>
-            </div>
-            <button class='logout' onClick={logout}>
-              Logout
-            </button>
-          </>
-        )}
-      </nav>
+      <Navbar loggedCharacter={loggedCharacter} logout={logout} />
       <div id='main'>
         {!loggedCharacter ? (
           <>
