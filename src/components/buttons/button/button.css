@@ -1,0 +1,10 @@
+.button:active {
+  scale: 85%;
+}
+
+.button {
+  cursor: pointer;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+}

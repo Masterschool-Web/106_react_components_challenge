@@ -1,0 +1,12 @@
+.choose-button {
+  background-color: rgb(129, 181, 129);
+  color: white;
+}
+
+.choose-button:hover {
+  background-color: rgb(152, 208, 152);
+}
+
+.choose-button:active {
+  background-color: rgb(129, 181, 129);
+}

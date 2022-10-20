@@ -1,0 +1,12 @@
+button.logout {
+  background-color: gray;
+  color: white;
+}
+
+button.logout:hover {
+  background-color: rgb(190, 190, 190);
+}
+
+button.logout:active {
+  background-color: gray;
+}
